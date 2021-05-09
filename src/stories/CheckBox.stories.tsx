@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
-import CheckBox from "./CheckBox";
+import CheckBox from "./ui/CheckBox";
 
 export default {
   title: "Custom-UI/Checkbox",
