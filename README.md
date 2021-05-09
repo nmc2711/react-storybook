@@ -8,5 +8,7 @@ UI 컴포넌트를 독립적으로 개발함으로써, 컴포넌트 재사용성
 작성 코드 및 ui를 시각적으로 확인 가능<br />
 디자인 가이드를 바탕으로 팀내 ui advice 환경 구축 가능<br />
 
-- CUSTOM CHECKBOX(O)
-- SELECTBOX (ING)
+- checkbox (구현완료) <br />
+- search (구현완료) <br />
+- selectbox (수정중) <br />
+- infinitescroll (진행중) <br />
