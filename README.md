@@ -11,4 +11,5 @@ UI 컴포넌트를 독립적으로 개발함으로써, 컴포넌트 재사용성
 - checkbox (구현완료) <br />
 - search (구현완료) <br />
 - selectbox (수정중) <br />
+- toast (구현완료) <br />
 - infinitescroll (진행중) <br />
