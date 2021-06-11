@@ -14,4 +14,4 @@ UI 컴포넌트를 독립적으로 개발함으로써, 컴포넌트 재사용성
 - toast (구현완료) <br />
 - tooltip (구현완료) <br />
 - pagination (기능 구현완료) <br />
-- infinitescroll (진행중) <br />
+- infinitescroll (기능 구현완료) <br />
