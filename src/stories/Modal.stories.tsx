@@ -3,7 +3,7 @@ import { useModal } from "./ui/modal/useModal";
 import GlobalModal from "./ui/modal/GlobalModal";
 
 export default {
-  title: "Custom-UI/Modal",
+  title: "Custom-UI/Modal & Confirm",
 };
 
 export const Default = () => {
