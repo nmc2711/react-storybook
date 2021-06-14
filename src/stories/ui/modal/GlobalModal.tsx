@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useCallback } from "react";
 import ReactDOM from "react-dom";
 
 import {
@@ -16,6 +16,9 @@ export interface ModalProps {
   hide: () => void;
   modalContent: JSX.Element;
   headerText?: string;
+  callback?: () => void;
+  type?: string;
+  noClose?: boolean;
 }
 
 const GlobalModal: React.FC<ModalProps> = ({
@@ -23,7 +26,16 @@ const GlobalModal: React.FC<ModalProps> = ({
   hide,
   modalContent,
   headerText,
+  callback,
+  type = "modal",
+  noClose,
 }) => {
+  const callbackFn = () => {
+    callback && callback();
+    setTimeout(() => {
+      hide();
+    }, 50);
+  };
   const modal = (
     <React.Fragment>
       <Backdrop />
@@ -31,9 +43,21 @@ const GlobalModal: React.FC<ModalProps> = ({
         <StyledModal>
           <Header>
             <HeaderText>{headerText}</HeaderText>
-            <CloseButton onClick={hide}>X</CloseButton>
+            {!noClose && <CloseButton onClick={hide}>X</CloseButton>}
           </Header>
           <Content>{modalContent}</Content>
+          {type === "confirm" && (
+            <>
+              <button onClick={callbackFn}>확인</button>
+              <button onClick={hide}>취소</button>
+            </>
+          )}
+
+          {type === "callbackModal" && (
+            <>
+              <button onClick={callbackFn}>확인</button>
+            </>
+          )}
         </StyledModal>
       </Wrapper>
     </React.Fragment>
