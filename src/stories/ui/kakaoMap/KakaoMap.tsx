@@ -4,7 +4,7 @@ declare global {
     kakao: any;
   }
 }
-
+console.log(window.kakao);
 const Map = () => {
   /*global kakao*/
   useEffect(() => {
