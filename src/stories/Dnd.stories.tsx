@@ -16,12 +16,14 @@ export const Default = () => {
     "어디?",
     "저기?",
   ]);
+
   const { handleDragStart, handleDragEnter, handleDragOver } = useDnd({
     list,
     setList,
     draggingRef,
     dragoverRef,
   });
+
   return (
     <div style={{ margin: "60px 60px" }}>
       {list &&

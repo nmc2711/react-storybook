@@ -1,11 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { ICheckBoxProps } from "./CheckBox";
-
 export interface ISelectBoxProps {
-  /**
-   * selectList open state & inner value
-   */
   state: {
     isOpen: boolean;
     selectIdx: number;
@@ -14,21 +9,9 @@ export interface ISelectBoxProps {
       text: string;
     }>;
   };
-  /**
-   * changing selected option
-   */
-  optionChange: any;
-  /**
-   * Exposing the first option value
-   */
+  optionChange: (value: innerChangeType) => void;
   firstVisible?: boolean;
-  /**
-   * Icon exposure
-   */
   icon?: boolean;
-  /**
-   *  style
-   */
   styling?: styleType;
 }
 
@@ -51,7 +34,7 @@ type styleType = {
 };
 
 export default function CustomSelectBox(props: ISelectBoxProps) {
-  const { state, optionChange, styling, firstVisible, icon } = props;
+  const { state, optionChange, styling, firstVisible } = props;
 
   const innerChangeOption = (arg: innerChangeType) => {
     optionChange(arg);
@@ -63,7 +46,7 @@ export default function CustomSelectBox(props: ISelectBoxProps) {
         className="innerBox"
         tabIndex={-1}
         onBlur={() => {
-          innerChangeOption({ type: "open", value: false });
+          state.isOpen && innerChangeOption({ type: "open", value: false });
         }}
       >
         {/* 셀렉스크롤이 닫힌 경우의 ui */}
@@ -90,11 +73,6 @@ export default function CustomSelectBox(props: ISelectBoxProps) {
                       innerChangeOption({ type: "select", idx: index });
                     }}
                   >
-                    {/* {icon === true && (
-                      <img
-                        src={`${IMG_SERVER}/images/exchange/bank/${item.value}.png`}
-                      />
-                    )} */}
                     {item.text ? item.text : item.cdNm ? item.cdNm : ""}
                   </div>
                 )}
@@ -121,22 +99,23 @@ const SelectBoxContainer = styled.div`
     align-items: center;
     height: 100%;
     z-index: 1;
-    font-size: ${(props: any) => (props.fontSize ? props.fontSize : "16px")};
+    font-size: ${(props: styleType) =>
+      props.fontSize ? props.fontSize : "16px"};
     .select {
       display: flex;
       align-items: center;
       border: 1px solid
-        ${(props: any) =>
+        ${(props: styleType) =>
           props.selectBordercolor ? props.selectBordercolor : "#632beb"};
       box-sizing: border-box;
       width: 100%;
       height: 100%;
-      /* padding: 0px 12px; */
+      padding: 0px 12px;
       position: relative;
-      color: ${(props: any) =>
+      color: ${(props: styleType) =>
         props.selectFontColor ? props.selectFontColor : "#632beb"};
       font-weight: 500;
-      border-radius: ${(props: any) =>
+      border-radius: ${(props: styleType) =>
         props.borderRadius ? props.borderRadius : "0px"};
       &:after {
         display: block;
@@ -147,9 +126,11 @@ const SelectBoxContainer = styled.div`
         height: 12px;
         transform: translate(-50%, -40%) rotate(-135deg);
         border-left: 2px solid
-          ${(props: any) => (props.iconColor ? props.iconColor : "#632beb")};
+          ${(props: styleType) =>
+            props.iconColor ? props.iconColor : "#632beb"};
         border-top: 2px solid
-          ${(props: any) => (props.iconColor ? props.iconColor : "#632beb")};
+          ${(props: styleType) =>
+            props.iconColor ? props.iconColor : "#632beb"};
         content: "";
       }
       cursor: pointer;
@@ -165,9 +146,11 @@ const SelectBoxContainer = styled.div`
           top: 60%;
           transform: translate(-50%, -60%) rotate(45deg);
           border-left: 2px solid
-            ${(props: any) => (props.iconColor ? props.iconColor : "#632beb")};
+            ${(props: styleType) =>
+              props.iconColor ? props.iconColor : "#632beb"};
           border-top: 2px solid
-            ${(props: any) => (props.iconColor ? props.iconColor : "#632beb")};
+            ${(props: styleType) =>
+              props.iconColor ? props.iconColor : "#632beb"};
           content: "";
         }
       }
@@ -176,7 +159,7 @@ const SelectBoxContainer = styled.div`
       overflow-y: auto;
       top: 100%;
       width: 100%;
-      height: ${(props: any) =>
+      height: ${(props: styleType) =>
         props.optionCoutNumber ? props.optionCoutNumber : "300"}%;
       display: flex;
       position: absolute;
@@ -184,7 +167,7 @@ const SelectBoxContainer = styled.div`
       margin-top: -1px;
       display: none;
       border: 1px solid
-        ${(props: any) => (props.lineColor ? props.lineColor : "#8555f6")};
+        ${(props: styleType) => (props.lineColor ? props.lineColor : "#8555f6")};
       box-sizing: border-box;
       &.open {
         display: block;
@@ -204,7 +187,7 @@ const SelectBoxContainer = styled.div`
       display: flex;
       align-items: center;
       width: 100%;
-      height: ${(props: any) =>
+      height: ${(props: styleType) =>
         props.optionHeight ? props.optionHeight : "40px"};
       padding: 0px 20px;
       font-size: 16px;
@@ -213,7 +196,7 @@ const SelectBoxContainer = styled.div`
       cursor: pointer;
       &:hover {
         background: #f8f8f8;
-        color: ${(props: any) =>
+        color: ${(props: styleType) =>
           props.hoverFontcolor ? props.hoverFontcolor : "#632beb"};
       }
       &:active {

@@ -1,38 +1,15 @@
-import React from "react";
-
 import styled from "styled-components";
-
 export interface ICheckBoxProps {
-  /**
-   *  checked status
-   */
   status: boolean;
-
-  /**
-   *  onchange event handler
-   */
   callback?: () => void;
-
-  /**
-   * checkbox size
-   */
   size?: number;
-
-  /**
-   *  checked background color
-   */
   bgColor?: string;
-
-  /**
-   *  check handler label
-   */
   label?: {
     text: string;
     id: string;
     position: "right" | "left";
   };
 }
-
 export default function CustomCheckBox(props: ICheckBoxProps) {
   const { status, callback, size, bgColor, label } = props;
   return (
@@ -88,7 +65,6 @@ const CheckBox = styled.input`
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-
   &::before {
     content: "";
     position: absolute;
