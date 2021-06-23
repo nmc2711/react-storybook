@@ -83,3 +83,13 @@ export const StyleSelect = () => {
     </div>
   );
 };
+
+export const FirstOptionNoneSelect = () => {
+  const [state, dispatch] = useReducer(selectReducer, initialValue);
+
+  return (
+    <div style={{ width: "200px", height: "40px" }}>
+      <SelectBox state={state} optionChange={dispatch} firstVisible={false} />
+    </div>
+  );
+};
