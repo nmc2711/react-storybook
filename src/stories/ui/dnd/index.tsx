@@ -2,11 +2,10 @@ import React, { useEffect, useState } from "react";
 
 export interface DndProps {
   list: Array<String>;
-  setList: (value: String[]) => void;
+  setList: (value: Array<any>) => void;
   draggingRef: React.MutableRefObject<any>;
   dragoverRef: React.MutableRefObject<any>;
 }
-
 export default function DragDropComponent(props: DndProps) {
   const { list, setList, draggingRef, dragoverRef } = props;
   const handleDragStart = (e: any, position: number) => {

@@ -10,7 +10,7 @@ export const Default = () => {
   const { isShown, toggle } = useModal();
   const content = (
     <React.Fragment>
-      <div>반갑습니다.</div>
+      <div>Yes, storybook 이벤트에 응모 되셨습니다.</div>
       <p>기본 닫기만 적용되는 Alert 모달입니다.</p>
     </React.Fragment>
   );
@@ -18,7 +18,12 @@ export const Default = () => {
   return (
     <>
       <button onClick={toggle}>기본닫기 모달호출</button>
-      <GlobalModal isShown={isShown} hide={toggle} modalContent={content} />
+      <GlobalModal
+        isShown={isShown}
+        hide={toggle}
+        modalContent={content}
+        headerText="당첨결과"
+      />
     </>
   );
 };

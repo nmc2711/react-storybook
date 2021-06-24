@@ -1,5 +1,6 @@
-import React, { useState, useEffect, useRef, useCallback } from "react";
+import React, { useState, useRef, useCallback } from "react";
 import InfiniteScroll from "./ui/infinitescroll/InfiniteScroll";
+import styled from "styled-components";
 
 export default {
   title: "Custom-UI/InfiniteScrollObserve",
@@ -34,20 +35,60 @@ export const Default = () => {
 
   return (
     <>
-      <h1>title이란 검색어로 검색했을때..</h1>
+      <InfiniteHeader>
+        " title " 이라는 검색어로 데이터를 조회했습니다.
+      </InfiniteHeader>
       {list.map((item, index) => {
         if (list.length === index + 1) {
           return (
-            <div ref={lastElementRef} key={index + "item"}>
+            <InfiniteItem ref={lastElementRef} key={index + "item"}>
               {item}
-            </div>
+            </InfiniteItem>
           );
         } else {
-          return <div key={index + "item"}>{item}</div>;
+          return <InfiniteItem key={index + "item"}>{item}</InfiniteItem>;
         }
       })}
-      <div>{loading && "로딩중..."}</div>
-      <div>{error && "에러.."}</div>
+      <Loading>{loading && "로딩중..."}</Loading>
+      <Error>{error && "에러.."}</Error>
     </>
   );
 };
+
+const InfiniteHeader = styled.h1`
+  padding: 10px;
+  border: 4px solid #632beb;
+  color: #222;
+  font-size: 20px;
+`;
+
+const InfiniteItem = styled.div`
+  width: 100%;
+  margin-bottom: 8px;
+  padding: 14px 20px;
+  box-sizing: border-box;
+  background-color: #632beb;
+  border-radius: 8px;
+  font-size: 17px;
+  font-weight: 500;
+  color: #fff;
+  &:last-child {
+    margin-bottom: 0;
+  }
+`;
+
+const Loading = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: #632beb;
+`;
+
+const Error = styled.div`
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
+  font-weight: 600;
+  color: red;
+`;
