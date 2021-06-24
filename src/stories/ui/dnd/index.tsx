@@ -1,21 +1,4 @@
 import React, { useEffect, useState } from "react";
-/***
- * @title : 드래그앤 드롭
- * @autor : 황상한
- * @pattern :
- * import useDnd from 'dnd';
- * const draggingRef = useRef();
-   const dragoverRef = useRef();
-   const [list, setList] = useState(['5678','테스트','테스트2123','테스트5689', '어디?', '저기?']);
-   const { handleDragStart, handleDragEnter, handleDragOver } = useDnd({ list, setList, draggingRef, dragoverRef });
- *  <div
-     onDragStart={(e) => handleDragStart(e, key)} -- 필수
-     onDragOver={(e) => e.preventDefault()} -- 이벤트 버블 방지(필수)
-     onDragEnter?={(e) => handleDragEnter(e, key)} --- 드래그하는 동시에 동적인 변경(선택)
-     onDrop?={(e) => handleDragEnter(e, key)} --- 드랍하는 순간에만 변경(선택)
-     draggable -- 필수
-     >
- */
 
 export interface DndProps {
   list: Array<String>;
