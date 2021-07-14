@@ -9,7 +9,8 @@ export interface ISelectBoxProps {
       text: string;
     }>;
   };
-  optionChange: (value: innerChangeType) => void;
+  optionChange: (value: any) => void;
+
   firstVisible?: boolean;
   icon?: boolean;
   styling?: styleType;

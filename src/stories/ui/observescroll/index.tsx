@@ -10,6 +10,7 @@ interface Props {
   rootmargin?: string;
   threshold?: number;
 }
+
 const InfinityComponent = forwardRef<HTMLDivElement, Props>(
   ({ children, ...props }, ref: any) => {
     const { callback, itemkey, leng, rootmargin, threshold } = props;
@@ -20,7 +21,7 @@ const InfinityComponent = forwardRef<HTMLDivElement, Props>(
     });
 
     const isVisible = !!entry?.isIntersecting;
-    const debouncedValue = useDebounce<boolean>(isVisible, 200);
+    const debouncedValue = useDebounce<boolean>(isVisible, 500);
 
     useEffect(() => {
       if (callback && isVisible) {

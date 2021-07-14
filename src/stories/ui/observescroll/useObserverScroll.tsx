@@ -31,7 +31,6 @@ function useObserveScroll(
   };
 
   useEffect(() => {
-    console.log(elementRef);
     if (!elementRef) return;
     const node = elementRef?.current;
     const hasIOsupport = window?.IntersectionObserver ?? false; // observer api 지원 확인
