@@ -57,7 +57,7 @@ export const Default = () => {
   );
 };
 
-export const Section: FC = ({ children }) => {
+const Section: FC = ({ children }) => {
   const ref = useRef<HTMLDivElement | null>(null);
   const { entry } = useObserveScroll(ref, {
     threshold: 0.2,
