@@ -18,4 +18,5 @@ UI 컴포넌트를 독립적으로 개발함으로써, 컴포넌트 재사용성
 - infinitescroll Observe + debounce(기능 구현완료) <br />
 - modal (구현완료) <br />
 - case별 confirm (구현완료) <br />
-- drag & drop (기능 구현완료)
+- drag & drop (기능 구현완료) <br />
+- accordian (기능 구현완료)
