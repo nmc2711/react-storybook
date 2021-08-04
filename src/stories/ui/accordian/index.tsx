@@ -1,9 +1,10 @@
 import { ReactElement, ReactNode, MouseEvent, useState } from 'react';
-import { ItemHeading, ItemContent, AccordianTableWrap } from  './styled';
+import { ItemHeading, ItemContent, AccordianTableWrap, ContentIMG } from  './styled';
 
 interface TAccordianItem {
   title: ReactNode | string,
-  content: ReactNode,
+  content: ReactNode | string,
+  contentImg?: string,
   expanded?: boolean,
   id: string,
   handleToggle?: (event: MouseEvent<HTMLButtonElement>) => void,
@@ -20,8 +21,10 @@ export function AccordianItems({
   content,
   expanded = false,
   id,
+  contentImg,
   handleToggle,
 }: TAccordianItem): ReactElement {
+  console.log(content)
   return (
     <>
       <ItemHeading>
@@ -38,7 +41,14 @@ export function AccordianItems({
         id={id}
         hidden={!expanded}
       >
-        {content}
+        {typeof content === 'string' ? content.split('\n').map(line => {
+          return (
+            <>
+              {line}<br />
+            </>
+          )
+        }) : content}
+        {contentImg && <ContentIMG src={contentImg} alt={`아이템 이미지 ${contentImg}`}/>}
       </ItemContent>
     </>
   );

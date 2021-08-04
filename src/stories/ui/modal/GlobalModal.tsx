@@ -52,7 +52,6 @@ const GlobalModal: React.FC<ModalProps> = ({
               <button onClick={hide}>취소</button>
             </>
           )}
-
           {type === "callbackModal" && (
             <>
               <button onClick={callbackFn}>확인</button>
