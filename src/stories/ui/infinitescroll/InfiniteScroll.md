@@ -2,22 +2,22 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 
 export interface InfiniteProps {
-  query: string;
-  pageNumber?: number;
-  url: string;
+query: string;
+pageNumber?: number;
+url: string;
 }
 
 export default function InfiniteScroll(props: InfiniteProps) {
-  const { query, pageNumber, url } = props;
+const { query, pageNumber, url } = props;
 
-  const [loading, setLoading] = useState<boolean>(true);
-  const [error, setError] = useState<boolean>(false);
-  const [list, setList] = useState<any[]>([]);
-  const [hasMore, setHasMore] = useState<boolean>(false);
+const [loading, setLoading] = useState<boolean>(true);
+const [error, setError] = useState<boolean>(false);
+const [list, setList] = useState<any[]>([]);
+const [hasMore, setHasMore] = useState<boolean>(false);
 
-  useEffect(() => {
-    setLoading(true);
-    setError(false);
+useEffect(() => {
+setLoading(true);
+setError(false);
 
     let cancel: any;
 
@@ -45,7 +45,8 @@ export default function InfiniteScroll(props: InfiniteProps) {
       });
 
     return () => cancel();
-  }, [query, pageNumber]);
 
-  return { loading, error, list, hasMore };
+}, [query, pageNumber]);
+
+return { loading, error, list, hasMore };
 }
