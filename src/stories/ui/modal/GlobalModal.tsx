@@ -1,4 +1,4 @@
-import React, { useCallback } from "react";
+import React from "react";
 import ReactDOM from "react-dom";
 
 import {
@@ -9,6 +9,9 @@ import {
   CloseButton,
   Content,
   Backdrop,
+  AgreeBtn,
+  BtnWrapper,
+  CancelBtn,
 } from "./styled";
 
 export interface ModalProps {
@@ -28,8 +31,9 @@ const GlobalModal: React.FC<ModalProps> = ({
   headerText,
   callback,
   type = "modal",
-  noClose,
+  noClose = false,
 }) => {
+  console.log(noClose)
   const callbackFn = () => {
     callback && callback();
     setTimeout(() => {
@@ -43,19 +47,19 @@ const GlobalModal: React.FC<ModalProps> = ({
         <StyledModal>
           <Header>
             <HeaderText>{headerText}</HeaderText>
-            {!noClose && <CloseButton onClick={hide}>X</CloseButton>}
+            {!noClose && <CloseButton onClick={hide} />}
           </Header>
           <Content>{modalContent}</Content>
           {type === "confirm" && (
-            <>
-              <button onClick={callbackFn}>확인</button>
-              <button onClick={hide}>취소</button>
-            </>
+            <BtnWrapper>
+              <AgreeBtn onClick={callbackFn}>확인</AgreeBtn>
+              <CancelBtn onClick={hide}>취소</CancelBtn>
+            </BtnWrapper>
           )}
           {type === "callbackModal" && (
-            <>
-              <button onClick={callbackFn}>확인</button>
-            </>
+            <BtnWrapper>
+              <AgreeBtn onClick={callbackFn}>확인</AgreeBtn>
+            </BtnWrapper>
           )}
         </StyledModal>
       </Wrapper>
