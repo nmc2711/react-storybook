@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-
+import { PagiNationWrap } from './styled';
 export interface PaginationProps {
   className?: string;
   totalItems: number;
@@ -43,7 +43,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
   };
 
   return (
-    <form className="pagination" onSubmit={handleSubmit}>
+    <PagiNationWrap className="pagination" onSubmit={handleSubmit}>
       <button
         className="button prev"
         onClick={handlePrevClick}
@@ -71,7 +71,7 @@ const Pagination: React.FC<PaginationProps> = (props) => {
       >
         다음
       </button>
-    </form>
+    </PagiNationWrap>
   );
 };
 

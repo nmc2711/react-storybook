@@ -1,4 +1,4 @@
 export const dummy = {
-  totalPage: 10,
-  totalItems: 30,
+  totalPage: 14,
+  totalItems: 100,
 };
